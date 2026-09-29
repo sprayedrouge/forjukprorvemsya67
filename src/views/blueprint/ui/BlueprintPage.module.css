@@ -1,0 +1,24 @@
+/* Swiss industrial print: paper, ink, one red. No radius, no shadows, no gradients. */
+.root {
+  --paper: #eae8e3;
+  --ink: #0a0a0a;
+  --ink-2: #4a4944;
+  --red: #e61919;
+
+  min-height: 100svh;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-archivo), sans-serif;
+  font-variation-settings: 'wdth' 100;
+}
+
+.root ::selection {
+  background: var(--red);
+  color: var(--paper);
+}
+
+.root :focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
+  border-radius: 0;
+}

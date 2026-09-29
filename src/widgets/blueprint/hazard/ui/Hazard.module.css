@@ -1,0 +1,45 @@
+.hazard {
+  border-bottom: 1px solid var(--ink);
+  overflow: clip;
+}
+
+.stripe {
+  height: 1.2rem;
+  background: repeating-linear-gradient(-45deg, var(--ink) 0 1.2rem, var(--red) 1.2rem 2.4rem);
+}
+
+.ticker {
+  display: flex;
+  width: max-content;
+  padding: 1.2rem 0;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-jet), monospace;
+  font-size: 1.4rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  animation: run 30s linear infinite;
+  will-change: transform;
+}
+
+.ticker span {
+  padding-right: 3.2rem;
+}
+
+.ticker b {
+  color: var(--red);
+  font-weight: 400;
+}
+
+@keyframes run {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker {
+    animation: none;
+  }
+}

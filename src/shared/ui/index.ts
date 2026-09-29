@@ -3,3 +3,5 @@ export { Icon, type IconName } from './icon';
 export { Logo } from './logo';
 export { Eyebrow } from './eyebrow';
 export { Grain } from './grain';
+export { DesignTheme, LAST_DESIGN_KEY } from './design-theme';
+export { Halftone } from './halftone';

@@ -1,0 +1,24 @@
+/* Printed-ink look: grayscale photo seen through a dot screen of paper colour. */
+.halftone {
+  position: relative;
+  isolation: isolate;
+}
+
+.halftone img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: grayscale(1) contrast(1.6) brightness(0.85);
+  mix-blend-mode: multiply;
+}
+
+.halftone::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle, transparent 48%, var(--halftone-paper, #eae8e3) 52%) 0 0 / var(--halftone-dot, 4px) var(--halftone-dot, 4px);
+  mix-blend-mode: lighten;
+  /* Screen only the product silhouette, not its bounding box. */
+  mask: var(--mask) center / 100% 100% no-repeat;
+}

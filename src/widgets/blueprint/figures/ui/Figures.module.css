@@ -1,0 +1,251 @@
+/* ---------- Static layout: vertical stack of sheets ---------- */
+.figures {
+  border-bottom: 1px solid var(--ink);
+}
+
+.stage {
+  display: flex;
+  flex-direction: column;
+}
+
+.head {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1px;
+  background: var(--ink);
+  border-bottom: 1px solid var(--ink);
+  font-family: var(--font-jet), monospace;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.head > * {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  padding: 1.2rem 1.6rem;
+  background: var(--paper);
+}
+
+.count {
+  font-variant-numeric: tabular-nums;
+}
+
+.count b {
+  color: var(--red);
+}
+
+.progress {
+  position: relative;
+  height: 0.4rem;
+  background: var(--paper);
+}
+
+.progress i {
+  position: absolute;
+  inset: 0;
+  background: var(--red);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.track {
+  display: flex;
+  flex-direction: column;
+}
+
+.sheet {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  border-bottom: 1px solid var(--ink);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  padding: 2.4rem 1.6rem;
+  border-right: 1px solid var(--ink);
+}
+
+.fig {
+  font-family: var(--font-jet), monospace;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.num {
+  font-size: clamp(12rem, 18vw, 28rem);
+  font-weight: 900;
+  font-variation-settings: 'wdth' 62;
+  line-height: 0.75;
+  letter-spacing: -0.04em;
+  color: var(--red);
+}
+
+.title {
+  max-width: 12ch;
+  font-size: clamp(3.2rem, 3.6vw, 5.6rem);
+  font-weight: 900;
+  font-variation-settings: 'wdth' 75;
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+.text {
+  max-width: 40ch;
+  font-size: 1.6rem;
+  line-height: 1.45;
+}
+
+.stat {
+  display: flex;
+  align-items: baseline;
+  gap: 1.2rem;
+  margin-top: auto;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--ink);
+}
+
+.stat b {
+  font-size: clamp(4.8rem, 5.6vw, 8.8rem);
+  font-weight: 900;
+  font-variation-settings: 'wdth' 75;
+  line-height: 0.85;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat span {
+  font-family: var(--font-jet), monospace;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Drawing board: graph paper, crosshair corners, scale bar */
+.board {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 52rem;
+  padding: 6.4rem 4.8rem;
+  background:
+    linear-gradient(rgb(10 10 10 / 0.07) 1px, transparent 1px) 0 0 / 2.4rem 2.4rem,
+    linear-gradient(90deg, rgb(10 10 10 / 0.07) 1px, transparent 1px) 0 0 / 2.4rem 2.4rem;
+}
+
+.cross {
+  position: absolute;
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+.cross::before,
+.cross::after {
+  content: '';
+  position: absolute;
+  background: var(--ink);
+}
+
+.cross::before {
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+}
+
+.cross::after {
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+}
+
+.tl { top: 1.2rem; left: 1.2rem; }
+.tr { top: 1.2rem; right: 1.2rem; }
+.bl { bottom: 1.2rem; left: 1.2rem; }
+.br { bottom: 1.2rem; right: 1.2rem; }
+
+.view {
+  position: absolute;
+  top: 1.6rem;
+  left: 5.2rem;
+  font-family: var(--font-jet), monospace;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.scale {
+  position: absolute;
+  bottom: 1.8rem;
+  left: 5.2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: var(--font-jet), monospace;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+}
+
+.scale i {
+  display: block;
+  width: 12rem;
+  height: 0.6rem;
+  border: 1px solid var(--ink);
+  background: linear-gradient(90deg, var(--ink) 50%, transparent 50%) 0 0 / 2.4rem 100%;
+}
+
+.drawing {
+  position: relative;
+  width: min(100%, 44rem);
+  will-change: transform;
+  --halftone-dot: 4px;
+}
+
+.portrait {
+  width: min(56%, 26rem);
+}
+
+/* ---------- Horizontal mode: pinned stage, sheets slide sideways ---------- */
+.horizontal .stage {
+  height: 100svh;
+  padding-top: 4.9rem; /* sticky top bar */
+  overflow: hidden;
+}
+
+.horizontal .track {
+  flex: 1;
+  flex-direction: row;
+  width: max-content;
+  min-height: 0;
+  will-change: transform;
+}
+
+.horizontal .sheet {
+  width: 86vw;
+  height: 100%;
+  border-bottom: 0;
+  border-right: 1px solid var(--ink);
+}
+
+.horizontal .board {
+  min-height: 0;
+}
+
+@media (max-width: 860px) {
+  .sheet {
+    grid-template-columns: 1fr;
+  }
+
+  .info {
+    border-right: 0;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .board {
+    min-height: 36rem;
+  }
+}

@@ -1,0 +1,142 @@
+.datasheet {
+  border-bottom: 1px solid var(--ink);
+}
+
+.head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 2.4rem;
+  padding: 9.6rem 1.6rem 2.4rem;
+  border-bottom: 1px solid var(--ink);
+}
+
+.heading {
+  font-size: clamp(5.6rem, 12vw, 18rem);
+  font-weight: 900;
+  font-variation-settings: 'wdth' 62;
+  line-height: 0.8;
+  text-transform: uppercase;
+}
+
+.caption {
+  max-width: 28ch;
+  font-family: var(--font-jet), monospace;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  text-align: right;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  padding: 1rem 1.6rem;
+  border-bottom: 1px solid var(--ink);
+  font-family: var(--font-jet), monospace;
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-align: left;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+.table td {
+  padding: 1.6rem;
+  border-bottom: 1px solid var(--ink);
+  vertical-align: baseline;
+}
+
+.row {
+  transition:
+    background 0.12s steps(2),
+    color 0.12s steps(2);
+}
+
+.row:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.row:hover .value {
+  color: var(--red);
+}
+
+.code,
+.param,
+.note {
+  font-family: var(--font-jet), monospace;
+  font-size: 1.2rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.code {
+  width: 12rem;
+  color: var(--ink-2);
+}
+
+.row:hover .code {
+  color: var(--paper);
+}
+
+.param {
+  width: 22%;
+}
+
+.value {
+  font-size: clamp(2.8rem, 3.4vw, 4.8rem);
+  font-weight: 900;
+  font-variation-settings: 'wdth' 75;
+  line-height: 0.95;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+}
+
+.note {
+  width: 30%;
+  line-height: 1.5;
+}
+
+@media (max-width: 760px) {
+  .head {
+    grid-template-columns: 1fr;
+  }
+
+  .caption {
+    text-align: left;
+  }
+
+  .table thead {
+    display: none;
+  }
+
+  .table tr {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.8rem 1.6rem;
+    padding: 1.6rem;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .table td {
+    padding: 0;
+    border: 0;
+  }
+
+  .code,
+  .param,
+  .note {
+    width: auto;
+  }
+
+  .value,
+  .note {
+    grid-column: 1 / -1;
+  }
+}

@@ -1,0 +1,316 @@
+.picker {
+  position: relative;
+  display: flex;
+  min-height: 100svh;
+  overflow: hidden;
+}
+
+.panel {
+  position: relative;
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
+  padding: 3.2rem clamp(2rem, 4vw, 4.8rem);
+  overflow: hidden;
+  transition: flex-grow 0.9s var(--ease-spring);
+  animation: open 1.2s var(--ease-spring) both;
+}
+
+.picker:has(.panel:hover) .panel:not(:hover) {
+  flex-grow: 0.7;
+}
+
+.panel:hover {
+  flex-grow: 1.4;
+}
+
+.panel:focus-visible {
+  outline-offset: -6px;
+}
+
+.top {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  gap: 1.6rem;
+}
+
+.visual {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.bottom {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.last {
+  padding: 0.4rem 0.8rem;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ---------- Cinematic preview ---------- */
+.cinematic {
+  background:
+    radial-gradient(40% 30% at 50% 58%, rgb(224 65 110 / 0.25), transparent 70%),
+    radial-gradient(34% 26% at 42% 52%, rgb(63 224 208 / 0.2), transparent 70%),
+    #0a0b0e;
+  color: #edeef0;
+  font-family: var(--font-sans);
+  animation-name: open-left;
+}
+
+.cinematic .top {
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #7d838c;
+}
+
+.cinematic .visual img {
+  width: min(78%, 56rem);
+  height: auto;
+  filter: drop-shadow(0 3rem 4rem rgb(0 0 0 / 0.7));
+  transition: transform 1.2s var(--ease-spring);
+  animation: float 5s ease-in-out infinite;
+}
+
+.cinematic:hover .visual img {
+  transform: scale(1.08) rotate(-3deg);
+}
+
+.cinematic .name {
+  font-size: clamp(5.6rem, 9vw, 14rem);
+  font-weight: 600;
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+}
+
+.cinematic .tagline {
+  max-width: 30ch;
+  font-size: 1.7rem;
+  color: #b4b9c1;
+}
+
+.cinematic .enter {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  align-self: flex-start;
+  padding: 1.2rem 2rem;
+  border-radius: 999px;
+  background: #edeef0;
+  color: #0a0b0e;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.cinematic .last {
+  border-radius: 999px;
+  background: linear-gradient(90deg, #3fe0d0, #8b6cff, #e0416e);
+  color: #0a0b0e;
+  font-family: var(--font-mono);
+}
+
+/* ---------- Blueprint preview ---------- */
+.blueprint {
+  background:
+    linear-gradient(rgb(10 10 10 / 0.07) 1px, transparent 1px) 0 0 / 2.4rem 2.4rem,
+    linear-gradient(90deg, rgb(10 10 10 / 0.07) 1px, transparent 1px) 0 0 / 2.4rem 2.4rem,
+    #eae8e3;
+  color: #0a0a0a;
+  font-family: var(--font-archivo);
+  border-left: 1px solid #0a0a0a;
+  animation-name: open-right;
+}
+
+.blueprint .top {
+  font-family: var(--font-jet), monospace;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.blueprint .visual > div {
+  width: min(84%, 64rem);
+  transition: transform 0.4s steps(4);
+  --halftone-dot: 4px;
+}
+
+.blueprint:hover .visual > div {
+  transform: translateX(-3%) rotate(-2deg);
+}
+
+.blueprint .name {
+  font-size: clamp(5.6rem, 11vw, 17rem);
+  font-weight: 900;
+  font-variation-settings: 'wdth' 62;
+  line-height: 0.8;
+  text-transform: uppercase;
+}
+
+.blueprint .name sup {
+  font-size: 0.24em;
+  vertical-align: top;
+  color: #e61919;
+}
+
+.blueprint .tagline {
+  max-width: 34ch;
+  font-family: var(--font-jet), monospace;
+  font-size: 1.2rem;
+  letter-spacing: 0.06em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.blueprint .enter {
+  align-self: flex-start;
+  padding: 1.2rem 1.6rem;
+  background: #0a0a0a;
+  color: #eae8e3;
+  font-family: var(--font-jet), monospace;
+  font-size: 1.2rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background 0.12s steps(2);
+}
+
+.blueprint:hover .enter {
+  background: #e61919;
+}
+
+.blueprint .last {
+  background: #e61919;
+  color: #eae8e3;
+  font-family: var(--font-jet), monospace;
+}
+
+/* ---------- Centre badge ---------- */
+.or {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 6.4rem;
+  height: 6.4rem;
+  margin: -3.2rem 0 0 -3.2rem;
+  border-radius: 50%;
+  background: #eae8e3;
+  color: #0a0a0a;
+  box-shadow: 0 0 0 1px #0a0a0a;
+  font-family: var(--font-jet), monospace;
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  pointer-events: none;
+  transition: opacity 0.4s;
+}
+
+.picker:has(.panel:hover) .or {
+  opacity: 0;
+}
+
+.title {
+  position: absolute;
+  top: 3.2rem;
+  left: 50%;
+  z-index: 2;
+  translate: -50% 0;
+  padding: 0.8rem 1.4rem;
+  background: #eae8e3;
+  color: #0a0a0a;
+  box-shadow: 0 0 0 1px #0a0a0a;
+  font-family: var(--font-jet), monospace;
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+@keyframes open-left {
+  from { clip-path: inset(0 0 0 100%); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+@keyframes open-right {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+@keyframes float {
+  50% { transform: translateY(-1.4rem) rotate(1deg); }
+}
+
+@media (max-width: 760px) {
+  .picker {
+    flex-direction: column;
+  }
+
+  .panel {
+    min-height: 50svh;
+  }
+
+  .blueprint {
+    border-left: 0;
+    border-top: 1px solid #0a0a0a;
+  }
+
+  /* Phones: the title becomes a strip and the product sits in flow between label and name. */
+  .title {
+    position: static;
+    translate: none;
+    text-align: center;
+    box-shadow: none;
+    border-bottom: 1px solid #0a0a0a;
+  }
+
+  .panel {
+    gap: 1.6rem;
+    padding-block: 2rem;
+  }
+
+  .visual {
+    position: relative;
+    inset: auto;
+    flex: 1;
+    min-height: 14rem;
+  }
+
+  .cinematic .visual img {
+    width: auto;
+    max-width: 80%;
+    max-height: 22svh;
+  }
+
+  .blueprint .visual > div {
+    width: min(80%, 40rem);
+  }
+
+  .or {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel,
+  .cinematic .visual img {
+    animation: none;
+  }
+}

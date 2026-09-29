@@ -141,3 +141,10 @@ html.lenis body {
 .lenis.lenis-stopped {
   overflow: clip;
 }
+
+/* Page substrate per design, so overscroll never flashes the other palette. */
+html[data-design='blueprint'],
+html[data-design='blueprint'] body {
+  background: #eae8e3;
+  color-scheme: light;
+}

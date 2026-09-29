@@ -1,0 +1,29 @@
+.colophon {
+  display: grid;
+  grid-template-columns: 2fr repeat(3, 1fr);
+  gap: 1px;
+  background: var(--ink);
+  font-family: var(--font-jet), monospace;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.colophon > * {
+  padding: 1.6rem 1.6rem 8rem;
+  background: var(--paper);
+}
+
+.colophon a:hover {
+  color: var(--red);
+}
+
+@media (max-width: 760px) {
+  .colophon {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .colophon > * {
+    padding-bottom: 3.2rem;
+  }
+}
