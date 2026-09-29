@@ -1,0 +1,23 @@
+.manifesto {
+  padding: clamp(12rem, 22vw, 26rem) clamp(2rem, 4vw, 4.8rem);
+}
+
+.text {
+  max-width: 24ch;
+  margin: 0 auto;
+  font-size: clamp(3.4rem, 5.6vw, 8rem);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.05em;
+  text-wrap: balance;
+}
+
+.word {
+  display: inline-block;
+}
+
+.accent {
+  background: var(--rgb-strip);
+  background-clip: text;
+  color: transparent;
+}

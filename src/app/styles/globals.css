@@ -1,0 +1,143 @@
+@property --spin {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+:root {
+  --bg: #0a0b0e;
+  --bg-2: #111319;
+  --text: #edeef0;
+  --text-2: #b4b9c1;
+  --muted: #7d838c;
+  --line: rgb(255 255 255 / 0.08);
+
+  /* The product's light strip is the only accent on the page. */
+  --cyan: #3fe0d0;
+  --violet: #8b6cff;
+  --magenta: #e0416e;
+  --green: #2ebb79;
+  --rgb-strip: linear-gradient(90deg, var(--cyan), var(--violet), var(--magenta));
+
+  --ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
+
+  --z-nav: 100;
+  --z-grain: 200;
+  --z-loader: 300;
+
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  background: var(--bg);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+  overflow-x: clip;
+}
+
+h1, h2, h3, h4, p, figure, blockquote, dl, dd {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  background: var(--magenta);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.container {
+  width: 100%;
+  max-width: 144rem;
+  margin-inline: auto;
+  padding-inline: clamp(2rem, 4vw, 4.8rem);
+}
+
+.mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: fixed;
+  top: 1.6rem;
+  left: 1.6rem;
+  z-index: calc(var(--z-loader) + 1);
+  padding: 1.2rem 2rem;
+  border-radius: 999px;
+  background: var(--text);
+  color: var(--bg);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus-visible {
+  transform: none;
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: clip;
+}

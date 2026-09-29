@@ -1,0 +1,53 @@
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding-top: 3.2rem;
+  border-top: 1px solid var(--line);
+}
+
+.count {
+  font-family: var(--font-mono);
+  font-size: 1.3rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.count b {
+  font-weight: 500;
+  color: var(--text);
+}
+
+.arrows {
+  display: flex;
+  gap: 1rem;
+}
+
+.arrow {
+  display: grid;
+  place-items: center;
+  width: 5.6rem;
+  height: 5.6rem;
+  border-radius: 50%;
+  color: var(--text);
+  box-shadow: inset 0 0 0 1px var(--line);
+  transition:
+    background 0.5s var(--ease-spring),
+    color 0.5s var(--ease-spring),
+    transform 0.5s var(--ease-spring);
+}
+
+.arrow:hover {
+  background: var(--text);
+  color: var(--bg);
+}
+
+.arrow:active {
+  transform: scale(0.94);
+}
+
+.arrow svg {
+  width: 1.8rem;
+  height: 1.8rem;
+}

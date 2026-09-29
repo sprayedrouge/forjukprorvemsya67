@@ -1,0 +1,179 @@
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  padding: 12rem clamp(2rem, 4vw, 4.8rem) 3.2rem;
+  overflow: clip;
+}
+
+.glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(40rem 22rem at calc(var(--mx, 0.5) * 100%) calc(var(--my, 0.55) * 100%), rgb(63 224 208 / 0.16), transparent 70%),
+    radial-gradient(60rem 30rem at 58% 62%, rgb(224 65 110 / 0.2), transparent 70%),
+    radial-gradient(50rem 26rem at 38% 58%, rgb(63 224 208 / 0.14), transparent 70%);
+}
+
+.stage {
+  position: relative;
+  flex: 1;
+  display: grid;
+  place-items: center;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: clamp(4.8rem, 18vw, 30rem);
+  font-weight: 700;
+  line-height: 0.8;
+  letter-spacing: -0.065em;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+.line {
+  display: block;
+  /* Clip below the baseline only, so letters can rise in and later fly sideways. */
+  clip-path: inset(-30% -100vw 0 -100vw);
+  padding-bottom: 0.02em;
+  white-space: nowrap;
+}
+
+.line:first-child {
+  position: relative;
+  z-index: 1;
+  color: var(--text);
+}
+
+.char {
+  will-change: transform;
+}
+
+.outline {
+  position: relative;
+  z-index: 3;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgb(237 238 240 / 0.55);
+}
+
+.product {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  width: min(64vw, 60rem);
+  height: fit-content;
+  margin: auto;
+}
+
+.tilt,
+.float {
+  will-change: transform;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 3rem 4rem rgb(0 0 0 / 0.7));
+}
+
+.shadow {
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  bottom: -8%;
+  height: 16%;
+  border-radius: 50%;
+  background: var(--rgb-strip);
+  filter: blur(40px);
+  opacity: 0.45;
+}
+
+.bottom {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2.4rem;
+}
+
+.kicker {
+  margin-bottom: 1.6rem;
+  font-size: 1.5rem;
+  color: var(--text-2);
+}
+
+.specs {
+  display: flex;
+  gap: 4rem;
+  margin: 0;
+}
+
+.specs dt {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.specs dd {
+  margin: 0.6rem 0 0;
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+
+.scrollHint {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 1px;
+  margin-inline: auto;
+  height: 5.6rem;
+  overflow: hidden;
+  background: var(--line);
+}
+
+.scrollHint::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent, var(--cyan));
+  animation: drip 2.2s var(--ease-spring) infinite;
+}
+
+@keyframes drip {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(100%); }
+}
+
+@media (max-width: 720px) {
+  .hero {
+    padding-top: 10rem;
+  }
+
+  /* Narrow screens: drop the product under the title so both lines stay readable. */
+  .product {
+    inset: 50% 0 auto;
+    width: 82vw;
+    margin-inline: auto;
+  }
+
+  .bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .scrollHint {
+    display: none;
+  }
+}

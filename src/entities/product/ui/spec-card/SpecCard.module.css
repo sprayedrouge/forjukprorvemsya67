@@ -1,0 +1,98 @@
+/* Double-bezel: an aluminium tray (shell) holding a glass plate (core). */
+.shell {
+  --r: 2.8rem;
+  --pad: 0.6rem;
+  position: relative;
+  padding: var(--pad);
+  border-radius: var(--r);
+  background: rgb(255 255 255 / 0.025);
+  box-shadow: inset 0 0 0 1px var(--line);
+  isolation: isolate;
+}
+
+/* Spotlight border that follows the cursor (--x/--y set by the parent widget). */
+.shell::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  padding: 1px;
+  background: radial-gradient(28rem circle at var(--x, 50%) var(--y, -20%), rgb(63 224 208 / 0.7), rgb(224 65 110 / 0.35) 40%, transparent 70%);
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.5s var(--ease-spring);
+}
+
+.shell:hover::before {
+  opacity: 1;
+}
+
+.core {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  height: 100%;
+  padding: 2.8rem;
+  overflow: hidden;
+  border-radius: calc(var(--r) - var(--pad));
+  background:
+    radial-gradient(40rem circle at var(--x, 50%) var(--y, -20%), rgb(255 255 255 / 0.05), transparent 60%),
+    var(--bg-2);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.06);
+}
+
+.icon {
+  width: 2.4rem;
+  height: 2.4rem;
+  background: var(--muted);
+  mask: var(--icon) center / contain no-repeat;
+  transition: background 0.5s var(--ease-spring);
+}
+
+.shell:hover .icon {
+  background: var(--cyan);
+}
+
+.title {
+  margin-top: auto;
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.value {
+  font-size: clamp(3.6rem, 4vw, 5.2rem);
+  font-weight: 500;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.value small {
+  margin-left: 0.3em;
+  font-size: 0.34em;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--muted);
+}
+
+.text {
+  max-width: 28ch;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+.note {
+  font-size: 1.2rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
