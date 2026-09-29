@@ -1,0 +1,41 @@
+.section {
+    padding: 20rem 0 15rem;
+}
+
+.section--light {
+    background-color: var(--light);
+    background-image: repeating-linear-gradient(
+        to right,
+        transparent 0px,
+        transparent 384px,
+        #EDEDED 384px,
+        #EDEDED 385px
+    );
+}
+
+
+.section--dark {
+    background-color: #0F0F0F;
+    background-image: repeating-linear-gradient(
+        to right,
+        transparent 0px,
+        transparent 384px,
+        #1A1A1A 384px,
+        #1A1A1A 385px
+    );
+}
+
+.section-title {
+    font-size: 6.4rem;
+    color: var(--primary);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: var(--letter-spacing);
+}
+
+.section-title--gradient {
+    background-image: linear-gradient(to right, var(--pink-light), var(--pink-dark));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

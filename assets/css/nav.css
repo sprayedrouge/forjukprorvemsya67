@@ -1,0 +1,18 @@
+.nav {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    justify-content: space-between;
+
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.nav-link {
+    color: var(--light);
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}

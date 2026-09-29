@@ -1,0 +1,35 @@
+.slider-arrows {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 25px;
+}
+
+
+.slider-arrows-prev,
+.slider-arrows-next{
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    opacity: 0.5;
+
+    transition: opacity .2s linear;
+
+    
+}
+
+
+.slider-arrows-prev:hover,
+.slider-arrows-next:hover {
+    opacity: 1;
+}
+
+.slider-arrows-prev {
+    transform: rotate(180deg);
+}
+
+.slider-arrows-icon {
+    display: block;
+    width: 45px;
+    height: 45px;
+}
