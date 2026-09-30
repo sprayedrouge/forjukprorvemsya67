@@ -1,0 +1,209 @@
+.levels {
+  padding: 12rem 2.4rem 16rem;
+  background: var(--cream);
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2.4rem;
+  max-width: 132rem;
+  margin: 0 auto 6.4rem;
+}
+
+.heading {
+  max-width: 12ch;
+  font-family: var(--font-unbounded), sans-serif;
+  font-size: clamp(4rem, 7vw, 10rem);
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+}
+
+.heading em {
+  font-style: normal;
+  color: var(--pink);
+  -webkit-text-stroke: 2.5px var(--ink);
+  paint-order: stroke fill;
+}
+
+.caption {
+  max-width: 30ch;
+  font-size: 1.7rem;
+  font-weight: 500;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 6.4rem;
+  max-width: 132rem;
+  margin: 0 auto;
+}
+
+/* Sticky cards: each one parks a little lower than the last, forming a pile. */
+.card {
+  position: sticky;
+  top: calc(10rem + var(--i) * 2.4rem);
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 3.2rem;
+  min-height: min(76svh, 70rem);
+  padding: clamp(2.4rem, 4vw, 4.8rem);
+  border: var(--border);
+  border-radius: 3.2rem;
+  background: var(--bg);
+  box-shadow: 8px 8px 0 var(--ink);
+  transform-origin: 50% 0;
+  will-change: transform;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem 1.4rem;
+  border: 2.5px solid var(--ink);
+  border-radius: 999px;
+  background: var(--cream);
+  font-family: var(--font-unbounded), sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.stars {
+  letter-spacing: 0.1em;
+}
+
+.stars i {
+  font-style: normal;
+  opacity: 0.25;
+}
+
+.stars i.on {
+  opacity: 1;
+}
+
+.title {
+  max-width: 14ch;
+  font-family: var(--font-unbounded), sans-serif;
+  font-size: clamp(3rem, 4.2vw, 6rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+
+.text {
+  max-width: 38ch;
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.score {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: auto;
+  padding: 1.6rem 2.4rem;
+  border: 2.5px solid var(--ink);
+  border-radius: 2rem;
+  background: var(--ink);
+  color: var(--cream);
+  box-shadow: 4px 4px 0 var(--cream);
+}
+
+.score small {
+  font-family: var(--font-unbounded), sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--lime);
+}
+
+.score b {
+  font-family: var(--font-unbounded), sans-serif;
+  font-size: clamp(4rem, 5.6vw, 8rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+.unit {
+  margin-left: 0.2em;
+  font-size: 0.4em;
+  color: var(--lime);
+}
+
+.art {
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.blob {
+  position: absolute;
+  width: 88%;
+  aspect-ratio: 1;
+  border: var(--border);
+  border-radius: 42% 58% 55% 45% / 48% 42% 58% 52%;
+  background: var(--cream);
+  animation: morph 8s ease-in-out infinite;
+}
+
+.art img {
+  position: relative;
+  width: auto;
+  max-width: 90%;
+  height: auto;
+  max-height: 48svh;
+  filter: drop-shadow(8px 8px 0 var(--ink));
+}
+
+@keyframes morph {
+  50% {
+    border-radius: 58% 42% 45% 55% / 42% 58% 42% 58%;
+    transform: rotate(8deg);
+  }
+}
+
+@media (max-width: 860px) {
+  .card {
+    grid-template-columns: 1fr;
+    top: calc(8rem + var(--i) * 1.2rem);
+    min-height: 0;
+    border-radius: 2.4rem;
+  }
+
+  .art {
+    order: -1;
+    min-height: 22rem;
+  }
+
+  .art img {
+    max-height: 22svh;
+  }
+
+  .text {
+    font-size: 1.6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :global(html:not(.force-motion)) .blob {
+    animation: none;
+  }
+}

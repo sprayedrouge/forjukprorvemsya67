@@ -1,0 +1,35 @@
+/* CRT terminal: phosphor green on black, scanlines, glow. */
+.root {
+  --bg: #050805;
+  --fg: #33ff66;
+  --dim: #1c8f3c;
+  --red: #ff3b3b;
+  --glow: 0 0 0.3em rgb(51 255 102 / 0.6), 0 0 1em rgb(51 255 102 / 0.25);
+
+  min-height: 100svh;
+  background: radial-gradient(120% 80% at 50% 40%, #07120a, var(--bg));
+  color: var(--fg);
+  font-family: var(--font-plex), monospace;
+}
+
+/* Scanlines and a vignette sit over everything, like the glass of a tube. */
+.root::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-grain);
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(0deg, rgb(0 0 0 / 0.22) 0 1px, transparent 1px 3px),
+    radial-gradient(120% 100% at 50% 50%, transparent 60%, rgb(0 0 0 / 0.55));
+}
+
+.root ::selection {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+.root :focus-visible {
+  outline: 1px dashed var(--fg);
+  outline-offset: 2px;
+}

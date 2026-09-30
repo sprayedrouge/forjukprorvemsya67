@@ -1,0 +1,64 @@
+.logs {
+  padding: 8rem 1.6rem;
+}
+
+.cmd {
+  margin-bottom: 1.6rem;
+  font-size: 1.5rem;
+}
+
+.cmd span {
+  color: var(--dim);
+}
+
+.stream {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 1.5rem;
+  line-height: 1.6;
+}
+
+.line {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  gap: 1.6rem;
+}
+
+.time {
+  color: var(--dim);
+}
+
+.level {
+  min-width: 5ch;
+}
+
+.warn {
+  color: var(--red);
+}
+
+.msg b {
+  font-weight: 600;
+}
+
+.msg q {
+  display: block;
+  margin-top: 0.4rem;
+  font-family: var(--font-vt), monospace;
+  font-size: clamp(2.2rem, 2.2vw, 3rem);
+  line-height: 1.1;
+  text-shadow: var(--glow);
+}
+
+@media (max-width: 700px) {
+  .line {
+    grid-template-columns: auto 1fr;
+  }
+
+  .time {
+    grid-column: 1 / -1;
+  }
+}

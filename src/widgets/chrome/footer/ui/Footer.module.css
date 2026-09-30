@@ -1,0 +1,38 @@
+.footer {
+  padding: 4.8rem 2.4rem 3.2rem;
+  overflow: hidden;
+  background: var(--pearl-2);
+}
+
+.mark {
+  font-family: var(--font-michroma), sans-serif;
+  font-size: 15.5vw;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  text-align: center;
+  background: var(--chrome);
+  background-clip: text;
+  color: transparent;
+  user-select: none;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1.6rem;
+  max-width: 120rem;
+  margin: 3.2rem auto 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--steel);
+}
+
+.links {
+  display: flex;
+  gap: 2.4rem;
+}
+
+.links a:hover {
+  color: var(--ink);
+}

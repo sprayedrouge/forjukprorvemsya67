@@ -21,8 +21,9 @@ export const viewport: Viewport = {
   themeColor: '#0a0b0e',
 };
 
-// Runs before first paint so the preloader covers the page only when motion is allowed.
-const motionFlag = `if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('is-motion')`;
+// Runs before first paint: decides motion (OS setting or the visitor's "motion on" override)
+// so the preloader and CSS animations agree with GSAP from the very first frame.
+const motionFlag = `(function(){var c=document.documentElement.classList,f=false;try{f=localStorage.getItem('goslide:motion')==='on'}catch(e){}if(f)c.add('force-motion');if(f||!matchMedia('(prefers-reduced-motion: reduce)').matches)c.add('is-motion')})()`;
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (

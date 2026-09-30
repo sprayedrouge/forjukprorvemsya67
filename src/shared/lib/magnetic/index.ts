@@ -2,13 +2,14 @@
 
 import { useEffect, type RefObject } from 'react';
 import { gsap } from '../gsap';
+import { prefersReducedMotion } from '../motion';
 
 /** Pulls an element toward the cursor on fine pointers. */
 export function useMagnetic(ref: RefObject<HTMLElement | null>, strength = 0.35) {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    if (!matchMedia('(pointer: fine) and (prefers-reduced-motion: no-preference)').matches) return;
+    if (!matchMedia('(pointer: fine)').matches || prefersReducedMotion()) return;
 
     const x = gsap.quickTo(el, 'x', { duration: 0.6, ease: 'power3.out' });
     const y = gsap.quickTo(el, 'y', { duration: 0.6, ease: 'power3.out' });

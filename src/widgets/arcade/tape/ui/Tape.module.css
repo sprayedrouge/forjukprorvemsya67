@@ -1,0 +1,67 @@
+.tape {
+  position: relative;
+  height: 22rem;
+  overflow: hidden;
+  background: var(--cream);
+}
+
+.band {
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  top: 50%;
+  border-block: var(--border);
+  overflow: hidden;
+}
+
+.band:first-child {
+  background: var(--pink);
+  rotate: -4deg;
+  translate: 0 -70%;
+}
+
+.band:last-child {
+  background: var(--blue);
+  color: var(--cream);
+  rotate: 3deg;
+  translate: 0 -10%;
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  padding: 1.4rem 0;
+  font-family: var(--font-unbounded), sans-serif;
+  font-size: clamp(2rem, 3vw, 3.6rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  white-space: nowrap;
+  animation: slide 24s linear infinite;
+  will-change: transform;
+}
+
+.band:last-child .track {
+  animation-direction: reverse;
+}
+
+.track span {
+  padding-right: 3.2rem;
+}
+
+.track b {
+  color: var(--lime);
+  -webkit-text-stroke: 2px var(--ink);
+  paint-order: stroke fill;
+}
+
+@keyframes slide {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :global(html:not(.force-motion)) .track {
+    animation: none;
+  }
+}

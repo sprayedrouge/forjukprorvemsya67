@@ -1,0 +1,56 @@
+/* Y2K liquid-metal capsule with a sheen that sweeps across on hover. */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.4rem 2.6rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #4a5163 0%, #1a1d26 48%, #0b0d12 52%, #2e3442 100%);
+  color: #f2f4f8;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.35),
+    inset 0 -2px 6px rgb(0 0 0 / 0.5),
+    0 1.2rem 2.4rem -1.2rem rgb(26 29 38 / 0.8);
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: transform 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent 30%, rgb(255 255 255 / 0.55) 48%, rgb(217 184 255 / 0.4) 52%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:hover::after {
+  transform: translateX(120%);
+}
+
+.btn:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.pearl {
+  background: linear-gradient(180deg, #ffffff 0%, #e3e6ed 48%, #c9ced8 52%, #f4f5f9 100%);
+  color: #1a1d26;
+  box-shadow:
+    inset 0 1px 0 #fff,
+    inset 0 -2px 6px rgb(26 29 38 / 0.15),
+    0 1.2rem 2.4rem -1.2rem rgb(26 29 38 / 0.5);
+}
+
+.small {
+  padding: 1rem 1.8rem;
+  font-size: 1.3rem;
+}

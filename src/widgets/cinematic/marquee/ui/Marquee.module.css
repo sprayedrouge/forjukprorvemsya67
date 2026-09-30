@@ -47,7 +47,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .track {
+  :global(html:not(.force-motion)) .track {
     animation: none;
   }
 }

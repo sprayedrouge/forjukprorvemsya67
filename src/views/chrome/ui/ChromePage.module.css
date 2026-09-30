@@ -1,0 +1,25 @@
+/* Y2K liquid chrome: pearl light, polished metal, iridescent sheen. */
+.root {
+  --pearl: #eef0f5;
+  --pearl-2: #dfe3ea;
+  --ink: #1a1d26;
+  --steel: #5f6778;
+  --chrome: linear-gradient(180deg, #ffffff 0%, #c9ced8 22%, #6b7385 46%, #1a1d26 50%, #9aa3b5 56%, #eef0f5 78%, #aab1bf 100%);
+  --iris: conic-gradient(from 200deg, #b8f3ff, #d9b8ff, #ffd6f0, #fff3b8, #c8ffe0, #b8f3ff);
+  --ease-liquid: cubic-bezier(0.65, 0, 0.35, 1);
+
+  min-height: 100svh;
+  background: var(--pearl);
+  color: var(--ink);
+  font-family: var(--font-manrope), sans-serif;
+}
+
+.root ::selection {
+  background: #d9b8ff;
+  color: var(--ink);
+}
+
+.root :focus-visible {
+  outline: 2px solid #8b6cff;
+  outline-offset: 3px;
+}

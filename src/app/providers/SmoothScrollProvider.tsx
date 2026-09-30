@@ -2,7 +2,7 @@
 
 import { useEffect, useState, type ReactNode } from 'react';
 import Lenis from 'lenis';
-import { gsap, ScrollTrigger, SmoothScrollContext } from '@/shared/lib';
+import { gsap, ScrollTrigger, SmoothScrollContext, prefersReducedMotion } from '@/shared/lib';
 
 /** Where an anchor lands: most sections at their top, pinned finales once fully revealed. */
 function anchorOffset(el: HTMLElement) {
@@ -17,7 +17,7 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
     history.scrollRestoration = 'manual';
     document.fonts?.ready.then(() => ScrollTrigger.refresh());
 
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (prefersReducedMotion()) return;
 
     const instance = new Lenis({ lerp: 0.085, wheelMultiplier: 0.9 });
     instance.on('scroll', ScrollTrigger.update);

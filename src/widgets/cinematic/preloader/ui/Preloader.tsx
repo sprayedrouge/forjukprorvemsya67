@@ -2,7 +2,7 @@
 
 import { useRef } from 'react';
 import Image from 'next/image';
-import { gsap, useGSAP, intro, useLenis, MOTION_OK } from '@/shared/lib';
+import { gsap, useGSAP, intro, useLenis, MOTION_OK, MOTION_REDUCED } from '@/shared/lib';
 import { siteConfig } from '@/shared/config';
 import s from './Preloader.module.css';
 
@@ -49,7 +49,7 @@ export function Preloader() {
       });
 
       // Reduced motion: no loader, release the hero immediately.
-      mm.add('(prefers-reduced-motion: reduce)', () => intro.finish());
+      mm.add(MOTION_REDUCED, () => intro.finish());
 
       return () => mm.revert();
     },

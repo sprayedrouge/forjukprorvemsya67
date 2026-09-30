@@ -1,0 +1,54 @@
+.head {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-nav);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 1.6rem;
+  padding: 1rem 2.4rem;
+  background: rgb(243 239 230 / 0.92);
+  border-bottom: 1px solid var(--ink);
+  font-family: var(--font-isans), sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.mast {
+  font-family: var(--font-iserif), serif;
+  font-size: 2.4rem;
+  font-style: italic;
+  letter-spacing: -0.01em;
+  text-transform: none;
+}
+
+.issue {
+  color: var(--muted);
+}
+
+.nav {
+  display: flex;
+  justify-content: flex-end;
+  gap: 2rem;
+}
+
+.nav a:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 860px) {
+  .head {
+    grid-template-columns: 1fr auto;
+  }
+
+  .issue {
+    display: none;
+  }
+
+  .nav a:not(:last-child) {
+    display: none;
+  }
+}

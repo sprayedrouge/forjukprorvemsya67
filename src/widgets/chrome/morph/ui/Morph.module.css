@@ -1,0 +1,208 @@
+/* ---------- Static layout (reduced motion) ---------- */
+.morph {
+  position: relative;
+}
+
+.stage {
+  position: relative;
+  background: var(--pearl);
+}
+
+.stageBlob,
+.dots {
+  display: none;
+}
+
+.act {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) minmax(0, 0.8fr);
+  align-items: center;
+  gap: 3.2rem;
+  max-width: 132rem;
+  margin: 0 auto;
+  padding: 8rem 2.4rem;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.index {
+  font-family: var(--font-michroma), sans-serif;
+  font-size: 1.3rem;
+  letter-spacing: 0.1em;
+  color: var(--steel);
+}
+
+.title {
+  font-family: var(--font-michroma), sans-serif;
+  font-size: clamp(2.8rem, 3.2vw, 4.8rem);
+  font-weight: 400;
+  line-height: 1.1;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.text {
+  max-width: 38ch;
+  font-size: 1.7rem;
+  line-height: 1.55;
+  color: var(--steel);
+}
+
+.visual {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+}
+
+.blob {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 3rem 4rem rgb(26 29 38 / 0.25));
+}
+
+.iris {
+  mix-blend-mode: soft-light;
+  opacity: 0.9;
+}
+
+.visual img {
+  position: relative;
+  width: auto;
+  max-width: 62%;
+  height: auto;
+  max-height: 62%;
+  filter: drop-shadow(0 2.4rem 2rem rgb(0 0 0 / 0.45));
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+  text-align: right;
+}
+
+.num {
+  font-family: var(--font-michroma), sans-serif;
+  font-size: clamp(4.8rem, 7vw, 11rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  background: var(--chrome);
+  background-clip: text;
+  color: transparent;
+  font-variant-numeric: tabular-nums;
+}
+
+.label {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--steel);
+}
+
+/* ---------- Pinned, morphing layout ---------- */
+.live .stage {
+  height: 100svh;
+  overflow: hidden;
+}
+
+.live .stageBlob {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  width: min(62vmin, 64rem);
+  height: min(62vmin, 64rem);
+  margin: calc(min(62vmin, 64rem) / -2) auto 0;
+}
+
+.live .actBlob {
+  display: none;
+}
+
+.live .act {
+  position: absolute;
+  inset: 0;
+  max-width: none;
+  /* Symmetric columns so the middle one sits exactly under the stage blob. */
+  grid-template-columns: minmax(0, 1fr) min(62vmin, 64rem) minmax(0, 1fr);
+  padding: 9rem 4rem;
+}
+
+.live .visual {
+  width: min(62vmin, 64rem);
+  justify-self: center;
+}
+
+.live .dots {
+  position: absolute;
+  bottom: 3.2rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.dots i {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 999px;
+  background: rgb(107 115 133 / 0.35);
+  transition:
+    width 0.5s var(--ease-liquid),
+    background 0.5s var(--ease-liquid);
+}
+
+.dots i.on {
+  width: 3.2rem;
+  background: linear-gradient(90deg, #6b7385, #1a1d26);
+}
+
+@media (max-width: 860px) {
+  .act,
+  .live .act {
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+    text-align: left;
+  }
+
+  /* Start the column at the blob's top so product and blob share one box. */
+  .live .act {
+    padding: 8rem 2rem 6rem;
+    align-content: start;
+  }
+
+  .visual,
+  .live .visual {
+    width: min(70vw, 34rem);
+    justify-self: center;
+    order: -1;
+  }
+
+  .live .stageBlob {
+    top: 8rem;
+    width: min(70vw, 34rem);
+    height: min(70vw, 34rem);
+    margin-top: 0;
+  }
+
+  .stat {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .text {
+    font-size: 1.5rem;
+  }
+}

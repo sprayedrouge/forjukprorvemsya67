@@ -1,0 +1,92 @@
+.letters {
+  padding: 14rem clamp(2.4rem, 5vw, 8rem);
+  border-bottom: 1px solid var(--ink);
+}
+
+.head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2.4rem;
+  margin-bottom: 4.8rem;
+  padding-bottom: 2.4rem;
+  border-bottom: 2px solid var(--ink);
+}
+
+.title {
+  font-family: var(--font-iserif), serif;
+  font-size: clamp(5.6rem, 9vw, 13rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 0.85;
+}
+
+.note {
+  font-family: var(--font-isans), sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.letter {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  margin: 0;
+  padding: 0 3.2rem;
+  border-left: 1px solid rgb(27 26 23 / 0.25);
+}
+
+.letter:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+
+.salute {
+  font-family: var(--font-iserif), serif;
+  font-size: 2.4rem;
+  font-style: italic;
+}
+
+.text {
+  margin: 0;
+  font-family: var(--font-news), serif;
+  font-size: 1.9rem;
+  line-height: 1.55;
+}
+
+.sign {
+  margin-top: auto;
+  font-family: var(--font-news), serif;
+  font-size: 1.5rem;
+  font-style: italic;
+  color: var(--muted);
+}
+
+.sign b {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+
+  .letter {
+    padding: 0;
+    border-left: 0;
+  }
+
+  .head {
+    flex-direction: column;
+  }
+}

@@ -1,7 +1,10 @@
-export { gsap, ScrollTrigger, useGSAP, MOTION_OK } from './gsap';
+export { gsap, ScrollTrigger, useGSAP, Draggable, MOTION_OK, MOTION_REDUCED } from './gsap';
+export { MOTION_KEY, isMotionForced, systemReducesMotion, prefersReducedMotion, setMotionForced } from './motion';
 export { SmoothScrollContext, useLenis, useScrollTo } from './smooth-scroll';
 export { intro } from './intro';
 export { SplitChars, SplitWords } from './split';
 export { useMagnetic } from './magnetic';
 export { formatNumber } from './format';
 export { scrambleText } from './scramble';
+export { blobPath } from './blob';
+export { imageToAscii, useAscii, resolveAscii, asciiSize } from './ascii';

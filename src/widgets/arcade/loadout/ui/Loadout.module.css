@@ -1,0 +1,196 @@
+.loadout {
+  padding: 12rem 2.4rem;
+  background: var(--cream);
+  border-top: var(--border);
+}
+
+.head {
+  max-width: 132rem;
+  margin: 0 auto 4.8rem;
+}
+
+.heading {
+  font-family: var(--font-unbounded), sans-serif;
+  font-size: clamp(4rem, 7vw, 10rem);
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: minmax(20rem, auto);
+  grid-template-areas:
+    'dims dims rate battery'
+    'dims dims sensor sensor'
+    'speed mcu system warranty'
+    'eco eco eco eco';
+  gap: 1.6rem;
+  max-width: 132rem;
+  margin: 0 auto;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding: 2.4rem;
+  overflow: hidden;
+  border: var(--border);
+  border-radius: 2.4rem;
+  background: var(--bg, var(--cream));
+  box-shadow: 5px 5px 0 var(--ink);
+  transition:
+    translate 0.25s var(--bounce),
+    box-shadow 0.25s var(--bounce);
+}
+
+.card:hover {
+  translate: -4px -4px;
+  box-shadow: 9px 9px 0 var(--ink);
+}
+
+.label {
+  font-family: var(--font-unbounded), sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.value {
+  margin-top: auto;
+  font-family: var(--font-unbounded), sans-serif;
+  font-size: clamp(3.2rem, 3.6vw, 5.2rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+.value small {
+  font-size: 0.36em;
+  letter-spacing: 0;
+}
+
+.long {
+  margin-top: auto;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.note {
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.icon {
+  width: 4.4rem;
+  height: 4.4rem;
+  border: 2.5px solid var(--ink);
+  border-radius: 1.2rem;
+  background: var(--cream);
+  display: grid;
+  place-items: center;
+  transition: rotate 0.3s var(--bounce);
+}
+
+.icon::after {
+  content: '';
+  width: 2.2rem;
+  height: 2.2rem;
+  background: var(--ink);
+  mask: var(--icon) center / contain no-repeat;
+}
+
+.card:hover .icon {
+  rotate: -12deg;
+}
+
+.dims {
+  grid-area: dims;
+  --bg: var(--lime);
+}
+
+.dims img {
+  align-self: center;
+  width: auto;
+  height: clamp(20rem, 24vw, 32rem);
+  filter: drop-shadow(6px 6px 0 var(--ink));
+  transition: rotate 0.4s var(--bounce);
+}
+
+.dims:hover img {
+  rotate: 8deg;
+}
+
+.sensor {
+  grid-area: sensor;
+  --bg: var(--ink);
+  color: var(--cream);
+}
+
+.sensor .icon {
+  border-color: var(--cream);
+}
+
+.sensor .value {
+  color: var(--lime);
+}
+
+.eco {
+  grid-area: eco;
+  flex-direction: row;
+  align-items: center;
+  gap: 3.2rem;
+  --bg: #7ee0a8;
+}
+
+.eco img {
+  width: min(32rem, 36%);
+  height: auto;
+  filter: drop-shadow(6px 6px 0 var(--ink));
+}
+
+.eco h3 {
+  font-family: var(--font-unbounded), sans-serif;
+  font-size: clamp(2.4rem, 3vw, 4rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+@media (max-width: 1000px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      'dims dims'
+      'rate battery'
+      'sensor sensor'
+      'speed mcu'
+      'system warranty'
+      'eco eco';
+  }
+}
+
+@media (max-width: 560px) {
+  .grid {
+    grid-template-columns: 1fr;
+    grid-template-areas: none;
+  }
+
+  .grid > * {
+    grid-area: auto !important;
+  }
+
+  .eco {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .eco img {
+    width: 80%;
+  }
+}

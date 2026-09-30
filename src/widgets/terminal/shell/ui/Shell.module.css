@@ -1,0 +1,91 @@
+.shell {
+  display: grid;
+  min-height: 100svh;
+  padding: 6.4rem 1.6rem 2.4rem;
+}
+
+.window {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--fg);
+  box-shadow: 0 0 5rem rgb(51 255 102 / 0.15);
+  cursor: text;
+}
+
+.titlebar {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.6rem 1.2rem;
+  background: var(--fg);
+  color: var(--bg);
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.out {
+  flex: 1;
+  min-height: 36rem;
+  max-height: 60svh;
+  margin: 0;
+  padding: 2rem;
+  overflow-y: auto;
+  font-size: 1.5rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.in {
+  color: var(--fg);
+}
+
+.info {
+  color: var(--dim);
+}
+
+.err {
+  color: var(--red);
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.2rem 2rem;
+  border-top: 1px solid var(--dim);
+  font-size: 1.5rem;
+}
+
+.form label {
+  color: var(--dim);
+  white-space: nowrap;
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  color: var(--fg);
+  font: inherit;
+  caret-color: var(--fg);
+  outline: none;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.6rem;
+}
+
+.chip {
+  padding: 0.6rem 1.2rem;
+  border: 1px solid var(--dim);
+  color: var(--fg);
+  font-size: 1.3rem;
+}
+
+.chip:hover {
+  background: var(--fg);
+  color: var(--bg);
+}

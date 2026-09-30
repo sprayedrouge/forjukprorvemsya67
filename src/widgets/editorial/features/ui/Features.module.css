@@ -1,0 +1,231 @@
+.features {
+  position: relative;
+}
+
+/* Opening photo essay */
+.essay {
+  position: relative;
+  height: 110svh;
+  overflow: hidden;
+}
+
+.essay img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 60%;
+}
+
+.essayCaption {
+  position: absolute;
+  left: 2.4rem;
+  right: 2.4rem;
+  bottom: 3.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2.4rem;
+  color: var(--paper);
+}
+
+.essayTitle {
+  max-width: 12ch;
+  font-family: var(--font-iserif), serif;
+  font-size: clamp(5.6rem, 9vw, 14rem);
+  font-weight: 400;
+  line-height: 0.88;
+  letter-spacing: -0.03em;
+}
+
+.essayTitle em {
+  font-style: italic;
+}
+
+.essayNote {
+  max-width: 30ch;
+  font-family: var(--font-isans), sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.12em;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+
+/* Spreads */
+.spread {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  border-bottom: 1px solid var(--ink);
+}
+
+.flip .figure {
+  order: 2;
+  border-left: 1px solid var(--ink);
+  border-right: 0;
+}
+
+.figure {
+  position: relative;
+  margin: 0;
+  border-right: 1px solid var(--ink);
+}
+
+/* The picture holds still while the article scrolls past it. */
+.plate {
+  position: sticky;
+  top: 5.2rem;
+  display: grid;
+  place-items: center;
+  height: calc(100svh - 5.2rem);
+  overflow: hidden;
+  background: var(--tone);
+}
+
+.plate img {
+  width: auto;
+  max-width: 70%;
+  height: auto;
+  max-height: 70%;
+  filter: drop-shadow(0 2.4rem 2.4rem rgb(0 0 0 / 0.35));
+}
+
+.figcaption {
+  position: absolute;
+  left: 2.4rem;
+  bottom: 2rem;
+  max-width: 34ch;
+  font-family: var(--font-news), serif;
+  font-size: 1.3rem;
+  font-style: italic;
+  color: rgb(27 26 23 / 0.75);
+}
+
+.folio {
+  position: absolute;
+  right: 2.4rem;
+  bottom: 2rem;
+  font-family: var(--font-isans), sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.article {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+  padding: 14svh clamp(2.4rem, 5vw, 8rem) 20svh;
+}
+
+.kicker {
+  font-family: var(--font-isans), sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.headline {
+  font-family: var(--font-iserif), serif;
+  font-size: clamp(4.8rem, 6.4vw, 10rem);
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.headline .ln {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.06em;
+}
+
+.headline .ln > span {
+  display: block;
+}
+
+.deck {
+  max-width: 30ch;
+  font-family: var(--font-news), serif;
+  font-size: clamp(2rem, 1.8vw, 2.6rem);
+  font-style: italic;
+  line-height: 1.3;
+  color: var(--muted);
+}
+
+.body {
+  max-width: 56ch;
+  font-family: var(--font-news), serif;
+  font-size: 1.8rem;
+  line-height: 1.65;
+}
+
+.body p + p {
+  margin-top: 1.2em;
+  text-indent: 1.5em;
+}
+
+.body p:first-child::first-letter {
+  float: left;
+  margin: 0.06em 0.1em 0 0;
+  font-family: var(--font-iserif), serif;
+  font-size: 4.6em;
+  line-height: 0.8;
+  color: var(--accent);
+}
+
+.pull {
+  max-width: 22ch;
+  margin: 2.4rem 0;
+  padding: 2.4rem 0;
+  border-top: 2px solid var(--accent);
+  border-bottom: 1px solid var(--ink);
+  font-family: var(--font-iserif), serif;
+  font-size: clamp(3.2rem, 3.2vw, 4.8rem);
+  font-style: italic;
+  line-height: 1.05;
+}
+
+.stat {
+  display: flex;
+  align-items: baseline;
+  gap: 1.2rem;
+  font-family: var(--font-isans), sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.stat b {
+  font-family: var(--font-iserif), serif;
+  font-size: 6.4rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  text-transform: none;
+}
+
+@media (max-width: 860px) {
+  .spread {
+    grid-template-columns: 1fr;
+  }
+
+  .flip .figure {
+    order: 0;
+  }
+
+  .figure,
+  .flip .figure {
+    border: 0;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .plate {
+    position: relative;
+    top: 0;
+    height: 60svh;
+  }
+
+  .essayCaption {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

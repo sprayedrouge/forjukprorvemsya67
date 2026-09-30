@@ -1,0 +1,53 @@
+/* tmux-style status line doubling as navigation */
+.bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-nav);
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  height: 3.2rem;
+  padding: 0 1.2rem;
+  background: var(--fg);
+  color: var(--bg);
+  font-family: var(--font-plex), monospace;
+  font-size: 1.3rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.session {
+  padding: 0 0.8rem;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.windows {
+  display: flex;
+  gap: 1.2rem;
+  overflow: hidden;
+}
+
+.windows a:hover {
+  text-decoration: underline;
+}
+
+.active {
+  font-weight: 700;
+}
+
+.active::after {
+  content: '*';
+}
+
+.right {
+  margin-left: auto;
+}
+
+@media (max-width: 640px) {
+  .windows a:not(.active) {
+    display: none;
+  }
+}

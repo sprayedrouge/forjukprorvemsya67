@@ -148,3 +148,32 @@ html[data-design='blueprint'] body {
   background: #eae8e3;
   color-scheme: light;
 }
+
+html[data-design='arcade'],
+html[data-design='arcade'] body {
+  background: #fff6e5;
+  color-scheme: light;
+}
+
+html[data-design='chrome'],
+html[data-design='chrome'] body {
+  background: #eef0f5;
+  color-scheme: light;
+}
+
+html[data-design='terminal'],
+html[data-design='terminal'] body {
+  background: #050805;
+}
+
+html[data-design='editorial'],
+html[data-design='editorial'] body {
+  background: #f3efe6;
+  color-scheme: light;
+}
+
+html[data-design='glass'],
+html[data-design='glass'] body {
+  background: #f4f1fb;
+  color-scheme: light;
+}

@@ -3,7 +3,7 @@
 import { useRef, useState } from 'react';
 import clsx from 'clsx';
 import { gsap, useGSAP, ScrollTrigger, intro } from '@/shared/lib';
-import { siteConfig } from '@/shared/config';
+import { designs, siteConfig } from '@/shared/config';
 import { Logo } from '@/shared/ui';
 import { OrderButton } from '@/features/order-product';
 import { MobileMenu } from '@/features/toggle-menu';
@@ -67,7 +67,13 @@ export function Header() {
         </nav>
         <div className={s.actions}>
           <OrderButton className={s.order} />
-          <MobileMenu links={[...siteConfig.nav, { label: 'Order now', href: '#order' }, { label: 'Blueprint ↗', href: '/blueprint' }]} />
+          <MobileMenu
+            links={[
+              ...siteConfig.nav,
+              { label: 'Order now', href: '#order' },
+              ...designs.filter((d) => d.id !== 'cinematic').map((d) => ({ label: `${d.name} ↗`, href: d.href })),
+            ]}
+          />
         </div>
       </div>
     </header>

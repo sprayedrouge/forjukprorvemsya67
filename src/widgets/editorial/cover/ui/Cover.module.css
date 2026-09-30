@@ -1,0 +1,291 @@
+/* ---------- Static: cover, then contents ---------- */
+.issue {
+  position: relative;
+}
+
+.stage {
+  display: grid;
+  place-items: center;
+  gap: 4.8rem;
+  padding: 8rem 2.4rem;
+}
+
+.book {
+  --w: min(44vw, 64svh);
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--w) var(--w);
+  aspect-ratio: auto;
+}
+
+.page {
+  position: relative;
+  width: var(--w);
+  aspect-ratio: 0.74;
+  overflow: hidden;
+  box-shadow: 0 2rem 5rem -2rem rgb(27 26 23 / 0.45);
+}
+
+/* Cover */
+.cover {
+  grid-column: 2;
+  grid-row: 1;
+  z-index: 2;
+  transform-style: preserve-3d;
+  transform-origin: 0 50%;
+  overflow: visible;
+  box-shadow: none;
+}
+
+.face {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  backface-visibility: hidden;
+  box-shadow: 0 2rem 5rem -2rem rgb(27 26 23 / 0.45);
+}
+
+.front {
+  display: flex;
+  flex-direction: column;
+  padding: 3.5% 5%;
+  background:
+    radial-gradient(70% 55% at 50% 60%, #9a3140, transparent 70%),
+    var(--accent);
+  color: var(--paper);
+}
+
+.back {
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 8%;
+  background: #d9d1c1;
+  color: var(--ink);
+}
+
+.shade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgb(0 0 0 / 0.35), transparent 60%);
+  opacity: 0;
+}
+
+.strip {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-isans), sans-serif;
+  font-size: calc(var(--w) * 0.018);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.masthead {
+  margin-top: 1%;
+  font-family: var(--font-iserif), serif;
+  font-size: calc(var(--w) * 0.3);
+  font-weight: 400;
+  line-height: 0.82;
+  letter-spacing: -0.04em;
+  text-align: center;
+}
+
+.star {
+  position: absolute;
+  left: 22%;
+  right: 22%;
+  top: 30%;
+  bottom: 10%;
+  display: grid;
+  place-items: center;
+}
+
+.star img {
+  width: auto;
+  height: 100%;
+  filter: drop-shadow(0 2.4rem 2.4rem rgb(0 0 0 / 0.55));
+}
+
+.lines {
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  top: 40%;
+  bottom: 6%;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.lines > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24%;
+}
+
+.lines > div:last-child {
+  text-align: right;
+}
+
+.line {
+  font-family: var(--font-iserif), serif;
+  font-size: calc(var(--w) * 0.042);
+  line-height: 1;
+}
+
+.line small {
+  display: block;
+  margin-bottom: 0.4em;
+  font-family: var(--font-isans), sans-serif;
+  font-size: 0.34em;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.line em {
+  font-style: italic;
+}
+
+.barcode {
+  position: absolute;
+  left: 43%;
+  bottom: 3%;
+  width: 14%;
+  height: 5%;
+  background: repeating-linear-gradient(90deg, var(--paper) 0 1px, transparent 1px 3px, var(--paper) 3px 5px, transparent 5px 6px);
+}
+
+/* Inside front cover: an advert */
+.ad {
+  font-family: var(--font-isans), sans-serif;
+  font-size: calc(var(--w) * 0.016);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.adImg {
+  align-self: center;
+  width: 70%;
+  height: auto;
+  filter: drop-shadow(0 1.6rem 2rem rgb(0 0 0 / 0.35));
+}
+
+.adLine {
+  font-family: var(--font-iserif), serif;
+  font-size: calc(var(--w) * 0.075);
+  font-style: italic;
+  line-height: 1;
+}
+
+/* Contents */
+.contents {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4%;
+  padding: 8% 7%;
+  background: var(--paper);
+  border: 1px solid rgb(27 26 23 / 0.12);
+}
+
+.contentsTitle {
+  font-family: var(--font-iserif), serif;
+  font-size: calc(var(--w) * 0.13);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 0.9;
+}
+
+.toc {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--ink);
+}
+
+.toc a {
+  display: grid;
+  grid-template-columns: 3em 1fr;
+  gap: 0.8em;
+  padding: 0.7em 0;
+  border-bottom: 1px solid rgb(27 26 23 / 0.2);
+  font-family: var(--font-news), serif;
+  font-size: calc(var(--w) * 0.028);
+  line-height: 1.2;
+  transition: color 0.3s;
+}
+
+.toc a:hover {
+  color: var(--accent);
+}
+
+.toc b {
+  font-family: var(--font-isans), sans-serif;
+  font-weight: 600;
+  font-size: 0.8em;
+  color: var(--accent);
+}
+
+.toc span em {
+  display: block;
+  font-size: 0.8em;
+  color: var(--muted);
+}
+
+.hint {
+  font-family: var(--font-isans), sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Static layout: show cover and contents one after another */
+.issue:not(.live) .book {
+  grid-template-columns: var(--w);
+  gap: 4.8rem;
+}
+
+.issue:not(.live) .cover,
+.issue:not(.live) .contents {
+  grid-column: 1;
+  grid-row: auto;
+}
+
+.issue:not(.live) .back {
+  display: none;
+}
+
+/* ---------- Live: pinned, the cover turns open on its spine ---------- */
+.live .stage {
+  height: 100svh;
+  padding: 6rem 2.4rem 3.2rem;
+  overflow: hidden;
+  perspective: 240rem;
+}
+
+.live .book {
+  transform-style: preserve-3d;
+}
+
+@media (max-width: 860px) {
+  .book {
+    --w: min(86vw, 62svh);
+  }
+
+  .live .book {
+    grid-template-columns: var(--w);
+  }
+
+  .live .cover,
+  .live .contents {
+    grid-column: 1;
+  }
+}

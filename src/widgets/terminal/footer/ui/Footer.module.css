@@ -1,0 +1,19 @@
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1.6rem;
+  padding: 2.4rem 1.6rem 8rem;
+  border-top: 1px solid var(--dim);
+  font-size: 1.3rem;
+  color: var(--dim);
+}
+
+.footer nav {
+  display: flex;
+  gap: 2.4rem;
+}
+
+.footer a:hover {
+  color: var(--fg);
+}

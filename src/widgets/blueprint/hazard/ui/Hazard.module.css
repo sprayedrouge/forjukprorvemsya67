@@ -39,7 +39,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ticker {
+  :global(html:not(.force-motion)) .ticker {
     animation: none;
   }
 }

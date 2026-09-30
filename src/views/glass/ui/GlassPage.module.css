@@ -1,0 +1,62 @@
+/* Soft glass: pastel light, frosted panels, gentle depth. */
+.root {
+  --ink: #1d1b2c;
+  --muted: #6d6a86;
+  --violet: #7b5cff;
+  --glass: rgb(255 255 255 / 0.55);
+  --stroke: rgb(255 255 255 / 0.75);
+  --shadow: 0 2.4rem 6rem -2.4rem rgb(80 70 140 / 0.35);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  position: relative;
+  min-height: 100svh;
+  background: #f4f1fb;
+  color: var(--ink);
+  font-family: var(--font-figtree), sans-serif;
+  isolation: isolate;
+}
+
+/* Drifting pastel light behind everything. Fixed and pre-blurred, so it costs nothing on scroll. */
+.aura {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.aura i {
+  position: absolute;
+  width: 55vmax;
+  height: 55vmax;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.7;
+  animation: drift 24s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.aura i:nth-child(1) { top: -20%; left: -15%; background: #d9ccff; }
+.aura i:nth-child(2) { top: 10%; right: -20%; background: #ffd6ec; animation-duration: 30s; }
+.aura i:nth-child(3) { bottom: -30%; left: 20%; background: #cdefff; animation-duration: 36s; }
+
+@keyframes drift {
+  to {
+    transform: translate(10vw, 8vh) scale(1.15);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :global(html:not(.force-motion)) .aura i {
+    animation: none;
+  }
+}
+
+.root ::selection {
+  background: #d9ccff;
+}
+
+.root :focus-visible {
+  outline: 2px solid var(--violet);
+  outline-offset: 3px;
+}

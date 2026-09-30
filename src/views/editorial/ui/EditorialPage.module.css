@@ -1,0 +1,22 @@
+/* A printed magazine: warm stock, black ink, oxblood accent, serif display. */
+.root {
+  --paper: #f3efe6;
+  --ink: #1b1a17;
+  --muted: #6f6a60;
+  --accent: #7a1f2b;
+
+  min-height: 100svh;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-news), serif;
+}
+
+.root ::selection {
+  background: var(--accent);
+  color: var(--paper);
+}
+
+.root :focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}

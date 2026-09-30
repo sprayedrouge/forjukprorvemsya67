@@ -130,7 +130,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .rgb::before {
+  :global(html:not(.force-motion)) .rgb::before {
     animation: none;
   }
 }

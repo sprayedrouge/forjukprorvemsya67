@@ -89,6 +89,201 @@
   color: #eae8e3;
 }
 
+/* Arcade: chunky sticker with a hard shadow */
+.pop {
+  gap: 0.4rem;
+  padding: 0.4rem;
+  border: 2px solid #121212;
+  border-radius: 1.6rem;
+  background: #fff6e5;
+  box-shadow: 4px 4px 0 #121212;
+  font-family: var(--font-unbounded), sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #121212;
+}
+
+.pop .label {
+  padding: 0 0.8rem;
+}
+
+.pop .link {
+  padding: 0.8rem 1.2rem;
+  border-radius: 1.2rem;
+}
+
+.pop .link:hover {
+  background: #cfff45;
+}
+
+.pop .current,
+.pop .current:hover {
+  background: #121212;
+  color: #fff6e5;
+}
+
+/* Chrome: glossy Y2K capsule */
+.chrome {
+  gap: 0.2rem;
+  padding: 0.4rem;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ffffff, #d6dae3 48%, #b9bfcc 52%, #eef0f5);
+  box-shadow:
+    inset 0 1px 0 #fff,
+    inset 0 -1px 0 rgb(26 29 38 / 0.2),
+    0 0.8rem 2rem -0.8rem rgb(26 29 38 / 0.45);
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1a1d26;
+}
+
+.chrome .label {
+  padding: 0 1rem;
+  color: #6b7385;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
+.chrome .link {
+  padding: 0.8rem 1.2rem;
+  border-radius: 999px;
+}
+
+.chrome .link:hover {
+  background: rgb(255 255 255 / 0.7);
+}
+
+.chrome .current,
+.chrome .current:hover {
+  background: linear-gradient(180deg, #3a4050, #1a1d26 50%, #0e1016);
+  color: #eef0f5;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.25);
+}
+
+.chrome .motion {
+  color: #8b6cff;
+  background: transparent;
+}
+
+/* Terminal: bracketed phosphor tabs */
+.term {
+  gap: 0;
+  border: 1px solid #1c8f3c;
+  background: #050805;
+  font-family: var(--font-plex), monospace;
+  font-size: 1.2rem;
+  color: #33ff66;
+  box-shadow: 0 0 1.6rem rgb(51 255 102 / 0.15);
+}
+
+.term .label,
+.term .link {
+  padding: 0.8rem 1.2rem;
+}
+
+.term .label {
+  color: #1c8f3c;
+}
+
+.term .link:hover {
+  background: rgb(51 255 102 / 0.12);
+}
+
+.term .current,
+.term .current:hover {
+  background: #33ff66;
+  color: #050805;
+}
+
+.term .motion {
+  color: #ff3b3b;
+  background: transparent;
+}
+
+/* Editorial: a folio line */
+.serif {
+  gap: 0;
+  border-top: 1px solid #1b1a17;
+  border-bottom: 1px solid #1b1a17;
+  background: #f3efe6;
+  font-family: var(--font-isans), sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #1b1a17;
+}
+
+.serif .label,
+.serif .link {
+  padding: 0.9rem 1.1rem;
+}
+
+.serif .label {
+  font-family: var(--font-iserif), serif;
+  font-style: italic;
+  font-size: 1.5rem;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.serif .link:hover {
+  color: #7a1f2b;
+}
+
+.serif .current,
+.serif .current:hover {
+  background: #7a1f2b;
+  color: #f3efe6;
+}
+
+.serif .motion {
+  color: #7a1f2b;
+  background: transparent;
+}
+
+/* Soft Glass: frosted pill */
+.glass {
+  gap: 0.2rem;
+  padding: 0.4rem;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.55);
+  backdrop-filter: blur(20px) saturate(1.6);
+  box-shadow:
+    inset 0 0 0 1px rgb(255 255 255 / 0.7),
+    0 1rem 3rem -1rem rgb(80 70 140 / 0.3);
+  font-family: var(--font-figtree), sans-serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #1d1b2c;
+}
+
+.glass .label {
+  padding: 0 1rem;
+  color: #6d6a86;
+}
+
+.glass .link {
+  padding: 0.8rem 1.3rem;
+  border-radius: 999px;
+}
+
+.glass .link:hover {
+  background: rgb(255 255 255 / 0.8);
+}
+
+.glass .current,
+.glass .current:hover {
+  background: #1d1b2c;
+  color: #fff;
+}
+
+.glass .motion {
+  color: #7b5cff;
+  background: transparent;
+}
+
 @media (max-width: 1100px) {
   .dark .label {
     display: none;
@@ -106,4 +301,47 @@
   .label {
     display: none;
   }
+
+  /* Seven designs don't fit a phone: the switch scrolls sideways instead of overflowing. */
+  .switch {
+    right: 1.6rem;
+    max-width: calc(100vw - 3.2rem);
+    overflow-x: auto;
+    scrollbar-width: none;
+    white-space: nowrap;
+  }
+
+  .switch::-webkit-scrollbar {
+    display: none;
+  }
+
+  .link {
+    flex: none;
+  }
+}
+
+/* Motion override: stands out while animations are off so it can be found. */
+.motion {
+  border: 0;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+}
+
+.dark .motion {
+  color: #3fe0d0;
+  background: transparent;
+}
+
+.paper .motion {
+  color: #e61919;
+}
+
+.pop .motion {
+  background: #ff6fb5;
+}
+
+.motionOn {
+  opacity: 0.6;
 }

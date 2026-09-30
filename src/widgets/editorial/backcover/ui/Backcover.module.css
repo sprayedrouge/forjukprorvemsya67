@@ -1,0 +1,103 @@
+.back {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 4.8rem;
+  min-height: 100svh;
+  padding: 10rem clamp(2.4rem, 5vw, 8rem) 12rem;
+  background:
+    radial-gradient(60% 60% at 70% 50%, #9a3140, transparent 70%),
+    var(--accent);
+  color: var(--paper);
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+}
+
+.kicker {
+  font-family: var(--font-isans), sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: var(--font-iserif), serif;
+  font-size: clamp(6.4rem, 10vw, 16rem);
+  font-weight: 400;
+  line-height: 0.85;
+  letter-spacing: -0.03em;
+}
+
+.title em {
+  display: block;
+  font-style: italic;
+}
+
+.line {
+  max-width: 36ch;
+  font-family: var(--font-news), serif;
+  font-size: 2rem;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.button {
+  align-self: flex-start;
+  padding: 1.6rem 2.8rem;
+  border: 1px solid var(--paper);
+  font-family: var(--font-isans), sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition:
+    background 0.4s,
+    color 0.4s;
+}
+
+.button:hover {
+  background: var(--paper);
+  color: var(--accent);
+}
+
+.product img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 3rem 3rem rgb(0 0 0 / 0.5));
+}
+
+.colophon {
+  position: absolute;
+  left: clamp(2.4rem, 5vw, 8rem);
+  right: clamp(2.4rem, 5vw, 8rem);
+  bottom: 2.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1.6rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid rgb(243 239 230 / 0.4);
+  font-family: var(--font-isans), sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.colophon nav {
+  display: flex;
+  gap: 2rem;
+}
+
+@media (max-width: 860px) {
+  .back {
+    grid-template-columns: 1fr;
+  }
+
+  .product {
+    order: -1;
+  }
+}

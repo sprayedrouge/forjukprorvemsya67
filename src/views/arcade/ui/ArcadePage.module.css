@@ -1,0 +1,27 @@
+/* Candy neo-brutalism: thick ink outlines, hard offset shadows, bouncy motion. */
+.root {
+  --ink: #121212;
+  --cream: #fff6e5;
+  --lime: #cfff45;
+  --pink: #ff6fb5;
+  --blue: #4b6bff;
+  --orange: #ff8a2a;
+  --lilac: #b9a6ff;
+  --border: 3px solid var(--ink);
+  --bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  min-height: 100svh;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-dm), sans-serif;
+}
+
+.root ::selection {
+  background: var(--pink);
+  color: var(--ink);
+}
+
+.root :focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+}

@@ -2,7 +2,7 @@
 
 import { useRef } from 'react';
 import clsx from 'clsx';
-import { gsap, useGSAP, MOTION_OK } from '@/shared/lib';
+import { gsap, useGSAP, MOTION_OK, prefersReducedMotion } from '@/shared/lib';
 import { Eyebrow } from '@/shared/ui';
 import { QuoteCard, reviews } from '@/entities/review';
 import { CarouselControls, useCarousel } from '@/features/switch-review';
@@ -40,7 +40,7 @@ export function Reviews() {
       const items = gsap.utils.toArray<HTMLElement>(`.${s.item}`);
       const active = items[index];
       gsap.set(items.filter((el) => el !== active), { autoAlpha: 0 });
-      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if (prefersReducedMotion()) return;
       gsap.fromTo(
         active,
         { autoAlpha: 0, x: 60 * direction, filter: 'blur(10px)' },

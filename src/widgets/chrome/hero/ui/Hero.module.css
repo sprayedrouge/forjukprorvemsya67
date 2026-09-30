@@ -1,0 +1,151 @@
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100svh;
+  padding: 12rem 2.4rem 6rem;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(60% 50% at 50% 0%, #ffffff, transparent 70%),
+    radial-gradient(40% 35% at 15% 30%, rgb(217 184 255 / 0.45), transparent 70%),
+    radial-gradient(40% 35% at 85% 35%, rgb(184 243 255 / 0.5), transparent 70%),
+    linear-gradient(180deg, var(--pearl), var(--pearl-2));
+}
+
+/* Retro-future floor: a grid receding to the horizon */
+.floor {
+  position: absolute;
+  z-index: -1;
+  left: -50%;
+  right: -50%;
+  bottom: -10%;
+  height: 60%;
+  background:
+    linear-gradient(rgb(107 115 133 / 0.35) 1px, transparent 1px) 0 0 / 100% 6rem,
+    linear-gradient(90deg, rgb(107 115 133 / 0.35) 1px, transparent 1px) 0 0 / 6rem 100%;
+  transform: perspective(60rem) rotateX(68deg);
+  transform-origin: 50% 0;
+  mask: linear-gradient(transparent, #000 30%);
+}
+
+.sparkle {
+  position: absolute;
+  z-index: -1;
+  color: #fff;
+  font-size: var(--size, 2rem);
+  line-height: 1;
+  text-shadow: 0 0 1rem rgb(217 184 255 / 0.9);
+  animation: twinkle var(--dur, 3s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+.title {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-michroma), sans-serif;
+  font-size: clamp(4.2rem, 10.5vw, 15rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-align: center;
+  text-transform: uppercase;
+  background: var(--chrome);
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0.4rem 0 rgb(26 29 38 / 0.15));
+}
+
+/* The SVG displacement is expensive, so it is attached only while the metal is moving. */
+.warping {
+  filter: url(#chrome-liquid) drop-shadow(0 0.4rem 0 rgb(26 29 38 / 0.15));
+}
+
+.title span {
+  display: block;
+}
+
+.product {
+  position: relative;
+  z-index: 2;
+  width: min(52vw, 60rem);
+  margin-top: -6vw;
+}
+
+.product img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Mirror on the floor */
+.reflection {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  transform: scaleY(-1);
+  opacity: 0.28;
+  mask: linear-gradient(to top, #000, transparent 55%);
+  filter: blur(1px);
+}
+
+.halo {
+  position: absolute;
+  z-index: -1;
+  inset: 20% 5% -10%;
+  border-radius: 50%;
+  background: var(--iris);
+  filter: blur(50px);
+  opacity: 0.7;
+}
+
+.row {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.4rem;
+  margin-top: 8rem;
+  text-align: center;
+}
+
+.lead {
+  max-width: 44ch;
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--steel);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.2rem;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(0.6) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1) rotate(45deg); }
+}
+
+@media (max-width: 760px) {
+  .product {
+    width: 86vw;
+    margin-top: 2rem;
+  }
+
+  .row {
+    margin-top: 5.6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :global(html:not(.force-motion)) .sparkle {
+    animation: none;
+  }
+}
